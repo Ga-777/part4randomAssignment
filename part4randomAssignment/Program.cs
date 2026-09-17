@@ -63,12 +63,24 @@ else
 Console.WriteLine("Press enter to contiune...");
 Console.ReadLine();
 Console.Clear();
-double  number3, number4;
+// 
+decimal  number3, number4;
+Console.WriteLine("Please enter your base number: ");
+while (!decimal.TryParse(Console.ReadLine(), out number3))
+    Console.WriteLine("Please enter a valid number.");
+Console.WriteLine("Please enter your mix number: ");
+while (!decimal.TryParse(Console.ReadLine(), out number4))
+    Console.WriteLine("Please enter a valid number.");
 
-double.TryParse(Convert.ToString(number1), out number3);
-double.TryParse(Convert.ToString(number2), out number4);
-double randomDouble = generator.NextDouble(number3, number4);
-for (int i = 0; i < 3; i++)
+decimal decimalRange = number3 - number4;
+
+
+
+
+for (int i = 0; i < 10; i++)
 {
-    Console.WriteLine(randomDouble);
+    decimal randomDecimal = ((decimal)generator.NextDouble() * decimalRange) + number4;
+    randomDecimal = Math.Round(randomDecimal, 2);
+
+    Console.WriteLine("Your random decimal number is:" + randomDecimal);
 }
